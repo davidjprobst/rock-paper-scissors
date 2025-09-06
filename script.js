@@ -16,11 +16,9 @@ function getComputerAnswer() {
     return randomNumber + " " + computerAnswer;
 }
 
-// INIT getHumanChoice function
+
 function getHumanChoice() {
-    // PROMPT user to choooise "Rock", "Paper", or "Scissors"
     humanChoice = prompt("Rock, paper, or scissors?", "");
-    // RETURN "you chose [humanChoice]" to console
     return "you chose " + humanChoice
 }
 
