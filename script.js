@@ -1,4 +1,6 @@
 let computerAnswer = "";
+// INIT humanChoice with a blank string
+let humanChoice = "";
 
 function getComputerAnswer() {
     let randomNumber = Math.random() * 100;
@@ -14,9 +16,13 @@ function getComputerAnswer() {
     return randomNumber + " " + computerAnswer;
 }
 
-// INIT getHumanChoice with a blank string
-// PROMPT user to choooise "Rock", "Paper", or "Scissors"
-// GET user choice
-// PRINT user choice to console
+// INIT getHumanChoice function
+function getHumanChoice() {
+    // PROMPT user to choooise "Rock", "Paper", or "Scissors"
+    humanChoice = prompt("Rock, paper, or scissors?", "");
+    // RETURN "you chose [humanChoice]" to console
+    return "you chose " + humanChoice
+}
 
 console.log(getComputerAnswer());
+console.log(getHumanChoice());
