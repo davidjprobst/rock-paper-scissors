@@ -31,32 +31,24 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === "paper" && computerChoice === "rock") {
         console.log("You win! You covered the computer's rock!");
-        // ADD 1 to human score
-    
+        humanScore++
     } else if (humanChoice === "rock" && computerChoice === "scissors") {
         console.log("You win! You smashed the computer's scissors!");
-        // ADD 1 to human score
-
+        humanScore++
     } else if (humanChoice === "scissors" && computerChoice === "paper") {
         console.log("You win! You smashed the computer's scissors!");
-        // ADD 1 to human score
-    
+        humanScore++
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
         console.log("You lose! Your paper was cut by scissors!");
-        // ADD 1 to computer score
-    
+        computerScore++
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
         console.log("You lose! Your scissors were smashed by a rock!");
-        // ADD 1 to computer score
-    
+        computerScore++
     } else if (humanChoice === "rock" && computerChoice === "paper") {
         console.log("You lose! Your rock was covered by paper!");
-        // ADD 1 to computer score
-
+        computerScore++
     } else if (humanChoice === computerChoice) {
-        // LOG "Draw! Try again..."
         console.log("Draw! Try again...");
-    
     } else {
         console.log("Something went wrong. You must choose rock, paper, or scissors.")
     }
