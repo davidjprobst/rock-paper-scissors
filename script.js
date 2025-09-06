@@ -1,5 +1,14 @@
-let computerAnswer = 0;
-let humanChoice = 0;
+// INIT playRound function with two parameters (humanChoice and computerChoice);
+    // Make humanChoice to be case insensitive
+    // PRINT results of game to console ex: "You lose! Paper beats rock!"
+    // ADD one point to the score of the winner
+        // IF human wins, ADD humanScore +1
+        // ELSE ADD computerScore +1
+
+let humanScore = 0;
+let computerScore = 0;
+let computerAnswer = "";
+let humanAnswer = "";
 
 function getComputerAnswer() {
     let randomNumber = Math.random() * 100;
@@ -16,10 +25,10 @@ function getComputerAnswer() {
 }
 
 
-function getHumanChoice() {
-    humanChoice = prompt("Rock, paper, or scissors?", "");
-    return "You chose " + humanChoice;
+function getHumanAnswer() {
+    humanAnswer = prompt("Rock, paper, or scissors?", "");
+    return "You chose " + humanAnswer;
 }
 
-console.log(getHumanChoice());
+console.log(getHumanAnswer());
 console.log(getComputerAnswer());
