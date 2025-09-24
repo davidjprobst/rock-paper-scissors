@@ -10,26 +10,41 @@ function getComputerChoice() {
     }
 
     return computerChoice;
-}
+};
+
+let humanScore = 0;
+let computerScore = 0;
+
+const humanScoreCounter = document.querySelector("#human-score-counter");
+    humanScoreCounter.textContent = `Human score: ${humanScore}`;
+
+const cpuScoreCounter = document.querySelector("#cpu-score-counter");
+    cpuScoreCounter.textContent = `Computer score: ${computerScore}`;
+
+const results = document.querySelector("#results");
+    const humanRoundChoice = document.createElement("p");
+    const cpuRoundChoice = document.createElement("p");
+    const roundResult = document.createElement("p");
+
+const buttons = document.querySelectorAll("button");
+
+const gameEnd = document.querySelector("#game-end");
+    const newGame = document.createElement("div");
+    const gameResult = document.createElement("p");
+    const newGameBtn = document.createElement("button");
+        newGameBtn.textContent = "Start a new game";
+
 
 function playGame() {
 
-    let humanScore = 0;
-    let computerScore = 0;
-
-    const buttons = document.querySelectorAll("button");
-    const humanScoreCounter = document.querySelector("#human-score-counter");
-        humanScoreCounter.textContent += ` ${humanScore}`;
-
-    const cpuScoreCounter = document.querySelector("#cpu-score-counter");
-        cpuScoreCounter.textContent += ` ${computerScore}`;
+    humanScore = 0;
+    computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
 
         humanChoice = humanSelection.toLowerCase();
         computerChoice = getComputerChoice();
         let result = ""
-
 
         if (humanChoice === "paper" && computerChoice === "rock") {
             result = "You win! You covered the computer's rock!";
@@ -61,33 +76,31 @@ function playGame() {
             result = "Something went wrong. You must choose rock, paper, or scissors.";
         }
 
-        const results = document.querySelector("#results");
-
-        const humanRoundChoice = document.createElement("div");
         humanRoundChoice.classList.add("human-round-choice");
         humanRoundChoice.textContent = `You chose ${humanChoice}`;
-
-        const cpuRoundChoice = document.createElement("div");
+        
         cpuRoundChoice.classList.add("cpu-round-choice");
         cpuRoundChoice.textContent = `The computer chose ${computerChoice}`;
-
-        const roundResult = document.createElement("div");
+        
         roundResult.classList.add("round-result");
         roundResult.textContent = `${result}`;
-
-        const gameEnd = document.createElement("div")
-        gameEnd.classList.add("round-result");
         
         results.appendChild(humanRoundChoice);
         results.appendChild(cpuRoundChoice);
         results.appendChild(roundResult);
 
-        if (humanScore === 5) {
-            gameEnd.textContent = "Game over! You win :D";
-            results.appendChild(gameEnd);
-        } else if (computerScore === 5) {
-            gameEnd.textContent = "Game over! You lose :-(";
-            results.appendChild(gameEnd);
+        if (computerScore === 5) {
+            gameResult.stlye.color = "green";
+            gameResult.textContent = "Game over! You win :D";
+            newGame.appendChild(gameResult);
+            newGame.appendChild(newGameBtn);
+            gameEnd.appendChild(newGame);
+        } else if (humanScore === 5) {
+            gameResult.style.color = "red";
+            gameResult.textContent = "Game over! You lose :-(";
+            newGame.appendChild(gameResult);
+            newGame.appendChild(newGameBtn);
+            gameEnd.appendChild(newGame);
         }
     }
 
@@ -96,6 +109,14 @@ function playGame() {
             humanSelection = button.id;
             playRound();
         });
+    });
+
+    newGameBtn.addEventListener("click", () => {
+        results.removeChild(humanRoundChoice);
+        results.removeChild(cpuRoundChoice);
+        results.removeChild(roundResult);
+        gameEnd.removeChild(newGame);
+        playGame();
     });
 
 }
