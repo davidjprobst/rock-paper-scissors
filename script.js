@@ -12,11 +12,6 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-// function getHumanChoice() {
-//     humanChoice = "Rock";
-//     return humanChoice;
-// }
-
 function playGame() {
 
     let humanScore = 0;
@@ -42,9 +37,11 @@ function playGame() {
             humanScoreCounter.textContent = `Human score: ${humanScore}`;
         } else if (humanChoice === "rock" && computerChoice === "scissors") {
             result = "You win! You smashed the computer's scissors!";
+            humanScore++;
             humanScoreCounter.textContent = `Human score: ${humanScore}`;
         } else if (humanChoice === "scissors" && computerChoice === "paper") {
             result = "You win! You smashed the computer's scissors!";
+            humanScore++;
             humanScoreCounter.textContent = `Human score: ${humanScore}`;
         } else if (humanChoice === "paper" && computerChoice === "scissors") {
             result = "You lose! Your paper was cut by scissors!";
@@ -78,9 +75,20 @@ function playGame() {
         roundResult.classList.add("round-result");
         roundResult.textContent = `${result}`;
 
+        const gameEnd = document.createElement("div")
+        gameEnd.classList.add("round-result");
+        
         results.appendChild(humanRoundChoice);
         results.appendChild(cpuRoundChoice);
         results.appendChild(roundResult);
+
+        if (humanScore === 5) {
+            gameEnd.textContent = "Game over! You win :D";
+            results.appendChild(gameEnd);
+        } else if (computerScore === 5) {
+            gameEnd.textContent = "Game over! You lose :-(";
+            results.appendChild(gameEnd);
+        }
     }
 
     buttons.forEach((button) => {
